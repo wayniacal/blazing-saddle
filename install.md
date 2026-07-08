@@ -46,6 +46,7 @@ legendary-taste's `tools-meta.md`. This file is the packing list, not the debate
 | mise | toolchain pins, per-directory env |
 | jj (jujutsu) | version control, colocated with git |
 | just | command runner (`check`/`fix`/`test`/`run`/`audit`/`ship`/`save`) |
+| gh | GitHub from the CLI: PRs, issues, CI runs, `--json` everywhere; one of the highest-value tools an agent touches. Easy to forget because apt ships one, but apt's is years stale; it belongs in the pin file like everything else |
 | ripgrep (`rg`) | search, the agent's eyes |
 | fd | file find, the agent's other eye |
 | shellcheck | shell oracle |
@@ -58,7 +59,7 @@ Each one beat the alternatives for a reason; the reason is in the note.
 | Tool | Role | Note |
 |---|---|---|
 | ast-grep | structural search, plus lint rules you write yourself | Rust, tree-sitter. Comby matches text, not syntax; GritQL is younger. Semgrep is the security-rule specialist, but gitleaks and osv-scanner already cover that ground. |
-| gitleaks | catches secrets before they ship (pre-commit or CI) | Go, fast, offline. trufflehog actually phones the provider to confirm a key is live, fewer false alarms, but it needs the network and the time. gitleaks is the right default. |
+| gitleaks | catches secrets before they ship (`just audit` / CI) | Go, fast, offline. trufflehog actually phones the provider to confirm a key is live, fewer false alarms, but it needs the network and the time. gitleaks is the right default. |
 | actionlint | lints GitHub Actions workflows | Go. Nothing else is close. Only earns its keep where you ship workflows. |
 | typos (optional) | spell-checks source | Rust, knows camelCase. codespell has the longer track record and a bigger dictionary, at the cost of being Python. Lowest priority of the set. |
 
